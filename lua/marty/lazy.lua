@@ -32,4 +32,7 @@ require("lazy").setup({
         priority = 1000,
         opts = {},
     },
+    {
+        'echasnovski/mini.nvim', version = false
+    },
 })
