@@ -27,10 +27,9 @@ require("lazy").setup({
         end
     },
     {
-      "catppuccin/nvim",
-      name = "catppuccin",
-      config = function()
-          vim.cmd([[colorscheme catppuccin]])
-      end,
+        "eldritch-theme/eldritch.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
     },
 })
