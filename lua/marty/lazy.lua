@@ -12,17 +12,25 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "folke/which-key.nvim",
-    {"nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function () 
-        local configs = require("nvim-treesitter.configs")
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function () 
+            local configs = require("nvim-treesitter.configs")
 
-        configs.setup({
-            ensure_installed = { "python", "go", "lua", "vim", "vimdoc" },
-            sync_install = false,
-            highlight = { enable = true },
-            indent = { enable = true },  
-        })
-    end}
+            configs.setup({
+                ensure_installed = { "python", "go", "lua", "vim", "vimdoc" },
+                sync_install = false,
+                highlight = { enable = true },
+                indent = { enable = true },  
+            })
+        end
+    },
+    {
+      "catppuccin/nvim",
+      name = "catppuccin",
+      config = function()
+          vim.cmd([[colorscheme catppuccin]])
+      end,
+    },
 })
