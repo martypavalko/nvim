@@ -32,6 +32,11 @@ require("lazy").setup({
         opts = {},
     },
     {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000
+    },
+    {
         'echasnovski/mini.nvim', version = false
     },
 })
