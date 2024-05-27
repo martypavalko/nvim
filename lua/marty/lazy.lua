@@ -39,4 +39,7 @@ require("lazy").setup({
     {
         'echasnovski/mini.nvim', version = false
     },
+    {
+        'terrortylor/nvim-comment',
+    },
 })
