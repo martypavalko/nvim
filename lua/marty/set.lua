@@ -29,5 +29,8 @@ opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 
 opt.updatetime = 50
+opt.colorcolumn = "80"
 
---opt.colorcolumn = "80"
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
