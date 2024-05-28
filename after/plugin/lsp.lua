@@ -15,9 +15,9 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<Return>'] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
     }),
     snippet = {
@@ -71,6 +71,13 @@ masonLsp.setup({
                 end
             })
         end,
+        gopls = function()
+            require('lspconfig').gopls.setup({
+                on_attach = function (clien, bufnr)
+                   print('hello gopls') 
+                end
+            })
+        end
     }
 })
 
