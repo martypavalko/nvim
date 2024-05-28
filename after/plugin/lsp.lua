@@ -7,6 +7,7 @@ lsp.preset("recommended")
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
     window = {
@@ -26,7 +27,6 @@ cmp.setup({
     },
 })
 
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
