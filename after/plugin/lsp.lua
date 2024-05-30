@@ -55,7 +55,7 @@ end)
 
 mason.setup({})
 masonLsp.setup({
-    ensure_installed = { "gopls", "lua_ls" },
+    ensure_installed = { "gopls", "lua_ls", "ansiblels" },
     handlers = {
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
@@ -73,8 +73,30 @@ masonLsp.setup({
         end,
         gopls = function()
             require('lspconfig').gopls.setup({
-                on_attach = function (clien, bufnr)
-                   print('hello gopls') 
+                on_attach = function (client, bufnr)
+                   print('hello from gopls')
+                end
+            })
+        end,
+        ansiblels = function ()
+           require('lspconfig').ansiblels.setup({
+                filetypes = {"yaml.ansible"},
+                settings = {
+                    ansible = {
+                        ansible = {
+                            path = "ansible",
+                        },
+                    },
+                    validation = {
+                        enabled = true,
+                        lint = {
+                            enabled = true,
+                            path = "ansible-lint",
+                        },
+                    },
+                },
+                on_attach = function (client, bufnr)
+                    print('hello from ansiblels')
                 end
             })
         end
