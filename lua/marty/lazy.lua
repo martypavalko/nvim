@@ -62,4 +62,7 @@ require("lazy").setup({
         main = 'ibl',
         opts = {}
     },
+    {
+        'mfussenegger/nvim-ansible'
+    }
 })
