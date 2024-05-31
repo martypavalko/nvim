@@ -25,6 +25,10 @@ cmp.setup({
           require('luasnip').lsp_expand(args.body)
         end,
     },
+    sources = {
+        { name = 'path' },
+        { name = 'buffer' },
+    }
 })
 
 
@@ -55,7 +59,7 @@ end)
 
 mason.setup({})
 masonLsp.setup({
-    ensure_installed = { "gopls", "lua_ls", "ansiblels" },
+    ensure_installed = { "gopls", "lua_ls", "ansiblels", "bashls" },
     handlers = {
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
@@ -99,7 +103,15 @@ masonLsp.setup({
                     print('ansiblels attached!')
                 end
             })
-        end
+        end,
+        bashls = function ()
+            require('lspconfig').bashls.setup({
+                filetypes = {"sh"},
+                on_attach = function (client, bufnr)
+                    print('bashls attached!')
+                end
+            })
+        end,
     }
 })
 
