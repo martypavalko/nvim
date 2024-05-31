@@ -64,5 +64,5 @@ require("lazy").setup({
     },
     {
         'mfussenegger/nvim-ansible'
-    }
+    },
 })
