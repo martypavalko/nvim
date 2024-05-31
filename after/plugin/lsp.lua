@@ -67,14 +67,14 @@ masonLsp.setup({
                     }
                 },
                 on_attach = function(client, bufnr)
-                    print('hello lua_ls')
+                    print('lua_ls attached!')
                 end
             })
         end,
         gopls = function()
             require('lspconfig').gopls.setup({
                 on_attach = function (client, bufnr)
-                   print('hello from gopls')
+                   print('gopls attached!')
                 end
             })
         end,
@@ -96,7 +96,7 @@ masonLsp.setup({
                     },
                 },
                 on_attach = function (client, bufnr)
-                    print('hello from ansiblels')
+                    print('ansiblels attached!')
                 end
             })
         end
