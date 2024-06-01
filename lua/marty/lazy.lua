@@ -65,4 +65,16 @@ require("lazy").setup({
     {
         'mfussenegger/nvim-ansible'
     },
+    {
+        'b0o/SchemaStore.nvim'
+
+    },
+    {
+        'someone-stole-my-name/yaml-companion.nvim',
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim'
+        },
+    },
 })
