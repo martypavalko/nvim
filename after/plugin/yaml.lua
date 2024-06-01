@@ -63,8 +63,8 @@ local function get_schema()
   return schema.result[1].name
 end
 
--- require('lualine').setup {
---   sections = {
---     lualine_x = {'fileformat', 'filetype', get_schema}
---   }
--- }
+require('lualine').setup {
+  sections = {
+    lualine_x = {'fileformat', 'filetype', get_schema}
+  }
+}
