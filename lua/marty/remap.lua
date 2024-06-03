@@ -14,3 +14,7 @@ keymap.set("n", "<leader>Y", [["+Y]])
 keymap.set("x", "<leader>p", [["_dP]])
 
 keymap.set("n", "<leader>l", vim.cmd.Lazy)
+
+keymap.set("n", "<leader>bh", vim.cmd.bprev)
+keymap.set("n", "<leader>bl", vim.cmd.bnext)
+keymap.set("n", "<leader>bq", vim.cmd.bdelete)
