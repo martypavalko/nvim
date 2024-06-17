@@ -18,3 +18,5 @@ keymap.set("n", "<leader>l", vim.cmd.Lazy)
 keymap.set("n", "<leader>bh", vim.cmd.bprev)
 keymap.set("n", "<leader>bl", vim.cmd.bnext)
 keymap.set("n", "<leader>bq", vim.cmd.bdelete)
+
+keymap.set("n", "<leader>ft", "<cmd>silent !tmux neww $HOME/.dotfiles/scripts/tmux-sessionizer.sh<CR>")
