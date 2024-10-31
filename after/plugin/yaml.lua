@@ -32,11 +32,13 @@ local cfg = require("yaml-companion").setup {
     settings = {
       yaml = {
         validate = true,
+        format = { enable = true },
+        hover = true,
         schemaStore = {
-          enable = false,
-          url = ""
+          enable = true,
+          url = "https://www.schemastore.org/api/json/catalog.json"
         },
-
+        schemaDownload = { enable = true },
         -- schemas from store, matched by filename
         -- loaded automatically
         schemas = require('schemastore').yaml.schemas {
