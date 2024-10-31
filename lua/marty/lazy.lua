@@ -70,7 +70,7 @@ require("lazy").setup({
 
     },
     {
-        'someone-stole-my-name/yaml-companion.nvim',
+        'msvechla/yaml-companion.nvim',
         dependencies = {
             'neovim/nvim-lspconfig',
             'nvim-lua/plenary.nvim',
