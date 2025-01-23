@@ -77,6 +77,7 @@ require("lazy").setup({
             'nvim-telescope/telescope.nvim'
         },
     },
+    {'towolf/vim-helm'},
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
