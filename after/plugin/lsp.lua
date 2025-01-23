@@ -60,7 +60,7 @@ end)
 
 mason.setup({})
 masonLsp.setup({
-    ensure_installed = { "gopls", "lua_ls", "ansiblels", "bashls", "yamlls", "helm_ls", "omnisharp" },
+    ensure_installed = { "gopls", "lua_ls", "ansiblels", "bashls", "yamlls", "helm_ls"},
     handlers = {
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
@@ -110,14 +110,6 @@ masonLsp.setup({
                 filetypes = {"sh"},
                 on_attach = function (client, bufnr)
                     print('bashls attached!')
-                end
-            })
-        end,
-        omnisharp = function ()
-            require('lspconfig').omnisharp.setup({
-                filetypes = {"cs"},
-                on_attach = function (client, bufnr)
-                    print('csharp detected')
                 end
             })
         end,
