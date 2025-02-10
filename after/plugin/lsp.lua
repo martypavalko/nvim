@@ -25,21 +25,10 @@ cmp.setup({
         end,
     },
     sources = {
+        { name = 'path' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'path' },
         { name = 'buffer' },
-    }
-})
-
-
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
     }
 })
 
@@ -55,14 +44,26 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-  -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 mason.setup({})
 masonLsp.setup({
-    ensure_installed = { "gopls", "lua_ls", "ansiblels", "bashls", "yamlls", "helm_ls"},
+    ensure_installed = { "gopls", "lua_ls", "ansiblels", "bashls", "yamlls", "helm_ls", "terraformls", "pyright"},
     handlers = {
+        terraformls = function ()
+           require('lspconfig').terraformls.setup({
+                cmd = {
+                    "terraform-ls", "serve"
+                },
+                filetypes = {
+                    "terraform", "terraform-vars"
+                },
+                on_attach = function (client, bufnr)
+                   print('terraform-ls attached!')
+                end
+            })
+        end,
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
                 settings = {
@@ -129,6 +130,29 @@ masonLsp.setup({
                             schemas = {
                                 kubernetes = "*.yaml",
                             },
+                            schemaStore = {
+                                enable = false,
+                                url = "",
+                            },
+                            -- schemas = require('schemastore').yaml.schemas {
+                            --     extra = {
+                            --         {
+                            --             url = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/argoproj.io/application_v1alpha1.json",
+                            --             name = "ArgoCD Application",
+                            --             fileMatch = "argocd/*-application.yaml"
+                            --         },
+                            --         {
+                            --             url = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/traefik.io/middleware_v1alpha1.json",
+                            --             name = "Traefik Middleware",
+                            --             fileMatch = "middleware.yaml"
+                            --         },
+                            --         {
+                            --             url = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/traefik.io/ingressroute_v1alpha1.json",
+                            --             name = "Traefik IngressRoute",
+                            --             fileMatch = "ingressroute.yaml"
+                            --         },
+                            --     }
+                            -- },
                             validate = true,
                             completion = true,
                             hover = true,
@@ -156,5 +180,18 @@ end
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+    -- virtual_text = true
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.HINT] = '',
+      [vim.diagnostic.severity.INFO] = '',
+    }
+  }
 })
+
+if vim.fn.expand("%:e") == "yaml"  then
+    vim.keymap.set("n", "fy", ":Telescope yaml_schema<CR>")
+end
+
