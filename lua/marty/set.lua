@@ -5,12 +5,13 @@ opt.guicursor = ""
 opt.nu = true
 opt.relativenumber = true
 
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 
 opt.smartindent = true
+opt.autoindent = true
 
 opt.wrap = false
 
@@ -26,10 +27,11 @@ opt.termguicolors = true
 
 opt.scrolloff = 8
 opt.signcolumn = "yes"
+opt.cursorcolumn = true
 opt.isfname:append("@-@")
 
 opt.updatetime = 50
--- opt.colorcolumn = "80"
+opt.colorcolumn = "80"
 opt.conceallevel = 2
 
 vim.g.loaded_netrw = 1
