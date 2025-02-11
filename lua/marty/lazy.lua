@@ -25,6 +25,7 @@ require("lazy").setup({
     {'hrsh7th/cmp-buffer'},
     {'hrsh7th/cmp-path'},
     {'L3MON4D3/LuaSnip'},
+    {'lewis6991/gitsigns.nvim'},
     {
         "eldritch-theme/eldritch.nvim",
         lazy = false,
@@ -147,7 +148,7 @@ require("lazy").setup({
           workspaces = {
             {
               name = "PKM",
-              path = "~/PKM/",
+              path = "~/Documents/PKM/",
             },
           },
         },
