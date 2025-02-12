@@ -5,7 +5,7 @@ local masonLsp = require("mason-lspconfig")
 lsp.preset("recommended")
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+-- local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
@@ -134,25 +134,6 @@ masonLsp.setup({
                                 enable = false,
                                 url = "",
                             },
-                            -- schemas = require('schemastore').yaml.schemas {
-                            --     extra = {
-                            --         {
-                            --             url = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/argoproj.io/application_v1alpha1.json",
-                            --             name = "ArgoCD Application",
-                            --             fileMatch = "argocd/*-application.yaml"
-                            --         },
-                            --         {
-                            --             url = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/traefik.io/middleware_v1alpha1.json",
-                            --             name = "Traefik Middleware",
-                            --             fileMatch = "middleware.yaml"
-                            --         },
-                            --         {
-                            --             url = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/traefik.io/ingressroute_v1alpha1.json",
-                            --             name = "Traefik IngressRoute",
-                            --             fileMatch = "ingressroute.yaml"
-                            --         },
-                            --     }
-                            -- },
                             validate = true,
                             completion = true,
                             hover = true,
@@ -160,16 +141,6 @@ masonLsp.setup({
                     }
                 },
                 on_attach = function (client, bufnr)
-                    local bufopts = { noremap=true, silent=true, buffer=bufnr }
-                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-                    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-                    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-                    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-                    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-                    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
                     print('helm_ls attached!')
                 end
     })
