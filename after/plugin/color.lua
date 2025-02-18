@@ -16,6 +16,7 @@ require("catppuccin").setup({
         },
         cmp = true,
         treesitter = true,
+        gitsigns = true,
         telescope = {
             enabled = true,
         },
