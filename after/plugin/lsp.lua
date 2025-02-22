@@ -49,7 +49,20 @@ end)
 
 mason.setup({})
 masonLsp.setup({
-    ensure_installed = { "gopls", "lua_ls", "ansiblels", "bashls", "yamlls", "helm_ls", "terraformls", "pyright"},
+    ensure_installed = {
+      "gopls",
+      "lua_ls",
+      "ansiblels",
+      "bashls",
+      "yamlls",
+      "helm_ls",
+      "terraformls",
+      "pyright",
+      "svelte",
+      "ts_ls",
+      "tailwindcss",
+      "cssls"
+    },
     handlers = {
         terraformls = function ()
            require('lspconfig').terraformls.setup({
