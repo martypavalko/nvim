@@ -54,6 +54,9 @@ require("lazy").setup({
         'terrortylor/nvim-comment',
     },
     {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+    },
+    {
         "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,
