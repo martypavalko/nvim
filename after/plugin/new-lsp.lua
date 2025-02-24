@@ -13,6 +13,12 @@ nvim_lsp.svelte.setup({
   end
 })
 
+nvim_lsp.angularls.setup({
+  on_attach = function (client, bufnr)
+    print("angularls attached!")
+  end
+})
+
 nvim_lsp.tailwindcss.setup({
   on_attach = function (client, bufnr)
     print("tailwindcss attached!")
@@ -22,5 +28,11 @@ nvim_lsp.tailwindcss.setup({
 nvim_lsp.cssls.setup({
   on_attach = function (client, bufnr)
     print("cssls attached!")
+  end
+})
+
+nvim_lsp.omnisharp.setup({
+  on_attach = function (client, bufnr)
+    print("omnisharp attached!")
   end
 })
