@@ -70,21 +70,6 @@ require("lspconfig")["yamlls"].setup(cfg)
 
 require("telescope").load_extension("yaml_schema")
 
--- get schema for current buffer
-local function get_schema()
-  local schema = require("yaml-companion").get_buf_schema(0)
-  if schema.result[1].name == "none" then
-    return ""
-  end
-  return schema.result[1].name
-end
-
-require('lualine').setup {
-  sections = {
-    lualine_x = {'fileformat', 'filetype', get_schema}
-  }
-}
-
 vim.filetype.add({
     pattern = {
         [".*templates/.+%.yaml"] = "helm",
