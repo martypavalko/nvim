@@ -16,22 +16,22 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
     },
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
-    {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-    {'neovim/nvim-lspconfig'},
+    {
+      "mason-org/mason-lspconfig.nvim",
+      opts = {
+        automatic_enable = false
+      },
+      dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+        },
+    },
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'hrsh7th/cmp-buffer'},
     {'hrsh7th/cmp-path'},
     {'L3MON4D3/LuaSnip'},
     {'lewis6991/gitsigns.nvim'},
-    {
-        "eldritch-theme/eldritch.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -95,6 +95,11 @@ require("lazy").setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
+        'akinsho/bufferline.nvim',
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons'
     },
     {
         "folke/which-key.nvim",

@@ -3,6 +3,7 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- TODO: Add logic to evaluate if plugin exists?
 -- keymap.set("n", "<leader>e", vim.cmd.Ex)
 keymap.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 
@@ -15,8 +16,10 @@ keymap.set("x", "<leader>p", [["_dP]])
 
 keymap.set("n", "<leader>l", vim.cmd.Lazy)
 
-keymap.set("n", "<leader>bh", vim.cmd.bprev)
-keymap.set("n", "<leader>bl", vim.cmd.bnext)
-keymap.set("n", "<leader>bq", vim.cmd.bdelete)
+keymap.set("n", "H", vim.cmd.bprev)
+keymap.set("n", "L", vim.cmd.bnext)
+keymap.set("n", "<leader>bd", vim.cmd.bdelete)
 
-keymap.set("n", "<leader>ft", "<cmd>silent !tmux neww $HOME/.dotfiles/scripts/tmux-sessionizer.sh<CR>")
+-- keymap.set("n", "<leader>ft", "<cmd>silent !tmux neww $HOME/.dotfiles/scripts/tmux-sessionizer.sh<CR>")
+-- TODO: Add logic to evaluate if plugin exists?
+vim.keymap.set("n", "<leader>xt", "<cmd>TodoTelescope<CR>")

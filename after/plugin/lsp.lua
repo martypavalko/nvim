@@ -1,11 +1,8 @@
-local lsp = require("lsp-zero")
 local mason = require("mason")
 local masonLsp = require("mason-lspconfig")
 
-lsp.preset("recommended")
 
 local cmp = require('cmp')
--- local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
@@ -32,23 +29,6 @@ cmp.setup({
     }
 })
 
-lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-
-  vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
-  vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-end)
-
 mason.setup({})
 masonLsp.setup({
     ensure_installed = {
@@ -65,110 +45,12 @@ masonLsp.setup({
       "tailwindcss",
       "cssls",
       "omnisharp",
-      "angularls"
+      "angularls",
+      "superhtml",
     },
-    handlers = {
-        terraformls = function ()
-           require('lspconfig').terraformls.setup({
-                cmd = {
-                    "terraform-ls", "serve"
-                },
-                filetypes = {
-                    "terraform", "terraform-vars"
-                },
-                on_attach = function (client, bufnr)
-                   print('terraform-ls attached!')
-                end
-            })
-        end,
-        lua_ls = function()
-            require('lspconfig').lua_ls.setup({
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { 'vim' }
-                        }
-                    }
-                },
-                on_attach = function(client, bufnr)
-                    print('lua_ls attached!')
-                end
-            })
-        end,
-        gopls = function()
-            require('lspconfig').gopls.setup({
-                on_attach = function (client, bufnr)
-                   print('gopls attached!')
-                end
-            })
-        end,
-        ansiblels = function ()
-           require('lspconfig').ansiblels.setup({
-                filetypes = {"yaml.ansible"},
-                settings = {
-                    ansible = {
-                        ansible = {
-                            path = "ansible",
-                        },
-                    },
-                    validation = {
-                        enabled = true,
-                        lint = {
-                            enabled = true,
-                            path = "ansible-lint",
-                        },
-                    },
-                },
-                on_attach = function (client, bufnr)
-                    print('ansiblels attached!')
-                end
-            })
-        end,
-        bashls = function ()
-            require('lspconfig').bashls.setup({
-                filetypes = {"sh"},
-                on_attach = function (client, bufnr)
-                    print('bashls attached!')
-                end
-            })
-        end,
-        helm_ls = function ()
-           require('lspconfig').helm_ls.setup({
-                filetypes = { "helm" },
-                cmd = { "helm_ls", "serve" },
-                settings = {
-                    ['helm_ls'] = {
-                        valuesFiles = {
-                            mainValuesFile = "values.yaml",
-                            lintOverlayValuesFile = "values.lint.yaml",
-                            additionalValuesFilesGlobPattern = "values*.yaml"
-                        },
-                        yamlls = {
-                            schemas = {
-                                kubernetes = "*.yaml",
-                            },
-                            schemaStore = {
-                                enable = false,
-                                url = "",
-                            },
-                            validate = true,
-                            completion = true,
-                            hover = true,
-                        }
-                    }
-                },
-                on_attach = function (client, bufnr)
-                    print('helm_ls attached!')
-                end
-    })
-end
-    }
 })
 
-lsp.setup()
-
 vim.diagnostic.config({
-    -- virtual_text = true
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = '',
@@ -183,3 +65,91 @@ if vim.fn.expand("%:e") == "yaml"  then
     vim.keymap.set("n", "fy", ":Telescope yaml_schema<CR>")
 end
 
+local status, nvim_lsp = pcall(require, "lspconfig")
+if (not status) then return end
+
+nvim_lsp.terraformls.setup({
+  cmd = {
+      "terraform-ls", "serve"
+  },
+  filetypes = {
+      "terraform", "terraform-vars"
+  },
+})
+
+nvim_lsp.lua_ls.setup({})
+
+nvim_lsp.gopls.setup({})
+
+nvim_lsp.ansiblels.setup({
+  filetypes = {"yaml.ansible"},
+  settings = {
+      ansible = {
+          ansible = {
+              path = "ansible",
+          },
+      },
+      validation = {
+          enabled = true,
+          lint = {
+              enabled = true,
+              path = "ansible-lint",
+          },
+      },
+  },
+})
+
+nvim_lsp.bashls.setup({
+  filetypes = {"sh"}
+})
+
+nvim_lsp.superhtml.setup({})
+
+nvim_lsp.ts_ls.setup({})
+
+nvim_lsp.svelte.setup({})
+
+nvim_lsp.angularls.setup({})
+
+nvim_lsp.tailwindcss.setup({})
+
+nvim_lsp.cssls.setup({})
+
+nvim_lsp.omnisharp.setup({})
+
+-- nvim_lsp.yamlls.setup({})
+require("lspconfig").lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  },
+})
+
+nvim_lsp.helm_ls.setup({
+  filetypes = { "helm" },
+  cmd = { "helm_ls", "serve" },
+  settings = {
+    ['helm_ls'] = {
+      valuesFiles = {
+        mainValuesFile = "values.yaml",
+        lintOverlayValuesFile = "values.lint.yaml",
+        additionalValuesFilesGlobPattern = "values*.yaml"
+      },
+      yamlls = {
+          schemas = {
+              kubernetes = "*.yaml",
+          },
+          schemaStore = {
+              enable = false,
+              url = "",
+          },
+          validate = true,
+          completion = true,
+          hover = true,
+      }
+    }
+  },
+})

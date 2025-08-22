@@ -24,7 +24,6 @@ masonLsp.setup({
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
               diagnosticMode = "workspace",
-              -- Django-specific settings
               extraPaths = { "." },  -- Add your Django project root if needed
             },
           },
