@@ -1,5 +1,24 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "lua", "go", "python", "vim", "vimdoc", "typescript", "javascript", "svelte", "css", "html", "angular" },
+  ensure_installed = {
+    "lua",
+    "go",
+    "gowork",
+    "gomod",
+    "gosum",
+    "gotmpl",
+    "sql",
+    "json",
+    "comment",
+    "python",
+    "vim",
+    "vimdoc",
+    "typescript",
+    "javascript",
+    "svelte",
+    "css",
+    "html",
+    "angular"
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
