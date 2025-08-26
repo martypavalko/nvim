@@ -38,23 +38,7 @@ require("lazy").setup({
         priority = 1000
     },
     {
-        'echasnovski/mini.nvim', version = false
-    },
-    {
-      "kylechui/nvim-surround",
-      version = "*", -- Use for stability; omit to use `main` branch for the latest features
-      event = "VeryLazy",
-      config = function()
-          require("nvim-surround").setup({
-              -- Configuration here, or leave empty to use defaults
-          })
-      end
-    },
-    {
-        'terrortylor/nvim-comment',
-    },
-    {
-        'JoosepAlviste/nvim-ts-context-commentstring',
+        'echasnovski/mini.nvim', version = "*"
     },
     {
         "nvim-tree/nvim-tree.lua",
@@ -70,11 +54,6 @@ require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.6',
         dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        main = 'ibl',
-        opts = {}
     },
     {
         'mfussenegger/nvim-ansible'
