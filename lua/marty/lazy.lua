@@ -76,11 +76,6 @@ require("lazy").setup({
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     {
-        'akinsho/bufferline.nvim',
-        version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons'
-    },
-    {
         "folke/which-key.nvim",
         event = "VeryLazy",
           init = function()
