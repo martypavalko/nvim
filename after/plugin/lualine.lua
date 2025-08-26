@@ -181,10 +181,23 @@ ins_right { 'progress' }
 
 lualine.setup(config)
 
-
 local bufferline = require('bufferline')
+local mocha = require("catppuccin.palettes").get_palette "mocha"
 bufferline.setup{
-  highlights = require("catppuccin.groups.integrations.bufferline").get(),
+  highlights = require("catppuccin.groups.integrations.bufferline").get_theme {
+      styles = { "italic", "bold" },
+      custom = {
+          all = {
+              fill = { bg = "#000000" },
+          },
+          mocha = {
+              background = { fg = mocha.text },
+          },
+          latte = {
+              background = { fg = "#000000" },
+          },
+      },
+  },
   options = {
     style_preset = bufferline.style_preset.minimal,
     enforce_regular_tabs = false,
