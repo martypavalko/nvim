@@ -115,7 +115,9 @@ nvim_lsp.tailwindcss.setup({})
 
 nvim_lsp.cssls.setup({})
 
-nvim_lsp.omnisharp.setup({})
+nvim_lsp.omnisharp.setup({
+  cmd = { vim.fn.stdpath("data") .. "/mason/bin/Omnisharp" },
+})
 
 -- nvim_lsp.yamlls.setup({})
 require("lspconfig").lua_ls.setup({
