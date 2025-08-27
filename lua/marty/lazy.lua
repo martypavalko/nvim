@@ -165,4 +165,8 @@ require("lazy").setup({
       end,
       ft = { "markdown" },
     },
+    {
+    'stevearc/conform.nvim',
+    opts = {},
+    }
 })
