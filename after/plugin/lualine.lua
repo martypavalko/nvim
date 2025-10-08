@@ -1,4 +1,4 @@
-local lualine = require('lualine')
+local lualine = require("lualine")
 
 local colors = {
 	rosewater = "#f5e0dc",
@@ -30,153 +30,137 @@ local colors = {
 }
 
 local conditions = {
-  buffer_not_empty = function()
-    return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
-  end,
-  hide_in_width = function()
-    return vim.fn.winwidth(0) > 80
-  end,
-  check_git_workspace = function()
-    local filepath = vim.fn.expand('%:p:h')
-    local gitdir = vim.fn.finddir('.git', filepath .. ';')
-    return gitdir and #gitdir > 0 and #gitdir < #filepath
-  end,
+	buffer_not_empty = function()
+		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+	end,
+	hide_in_width = function()
+		return vim.fn.winwidth(0) > 80
+	end,
+	check_git_workspace = function()
+		local filepath = vim.fn.expand("%:p:h")
+		local gitdir = vim.fn.finddir(".git", filepath .. ";")
+		return gitdir and #gitdir > 0 and #gitdir < #filepath
+	end,
 }
 --
 local config = {
-  options = {
-    -- Disable sections and component separators
-    component_separators = '',
-    section_separators = '',
-    theme = "catppuccin",
-  },
-  sections = {
-    -- these are to remove the defaults
-    lualine_a = {'mode'},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    -- These will be filled later
-    lualine_c = {},
-    lualine_x = {},
-  },
-  inactive_sections = {
-    -- these are to remove the defaults
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    lualine_c = {},
-    lualine_x = {},
-  },
+	options = {
+		-- Disable sections and component separators
+		component_separators = "",
+		section_separators = "",
+		theme = "catppuccin",
+	},
+	sections = {
+		-- these are to remove the defaults
+		lualine_a = { "mode" },
+		lualine_b = {},
+		lualine_y = { "location" },
+		lualine_z = { "progress" },
+		-- These will be filled later
+		lualine_c = {},
+		lualine_x = {},
+	},
+	inactive_sections = {
+		-- these are to remove the defaults
+		lualine_a = {},
+		lualine_b = {},
+		lualine_y = {},
+		lualine_z = {},
+		lualine_c = {},
+		lualine_x = {},
+	},
 }
 --
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
+	table.insert(config.sections.lualine_c, component)
 end
 
 -- Inserts a component in lualine_x at right section
 local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
+	table.insert(config.sections.lualine_x, component)
 end
 
--- ins_left {
---   -- mode component
---   function()
---     return ''
---   end,
---   padding = { left = 1, right = 1 },
--- }
+ins_left({
+	"branch",
+	icon = "",
+	color = { fg = colors.green },
+})
 
-ins_left {
-  'branch',
-  icon = '',
-  color = { fg = colors.green },
-}
-
-ins_left {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
-  diff_color = {
-    added = {},
-    modified = {},
-    removed = {},
-  },
-  cond = conditions.hide_in_width,
-}
-
--- ins_left {
---   'filename',
---   cond = conditions.buffer_not_empty,
--- }
-
--- ins_left {'buffers'}
+ins_left({
+	"diff",
+	-- Is it me or the symbol for modified us really weird
+	symbols = { added = " ", modified = "󰝤 ", removed = " " },
+	diff_color = {
+		added = {},
+		modified = {},
+		removed = {},
+	},
+	cond = conditions.hide_in_width,
+})
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
-ins_left {
-  function()
-    return '%='
-  end,
-}
+ins_left({
+	function()
+		return "%="
+	end,
+})
 
-ins_left {
-  -- Lsp server name .
-  function()
-    local msg = { }
-    -- local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
-    local clients = vim.lsp.get_clients()
-    if next(clients) == nil then
-      msg[#msg+1] = "N/A"
-      return table.concat(msg, "")
-    end
-    for _, client in ipairs(clients) do
-      msg[#msg+1] = client.name
-    end
-    return table.concat(msg, ", ")
-    -- WARNING: I am unsure what this block does, and am leaving in as a comment for reference
-    -- for _, client in ipairs(clients) do
-    --   local filetypes = client.config.filetypes
-    --   if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-    --     return client.name
-    --   end
-    -- end
-  end,
-  icon = '',
-  color = { fg = colors.sapphire, gui = 'bold' },
-}
+ins_left({
+	-- Lsp server name .
+	function()
+		local msg = {}
+		-- local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+		local clients = vim.lsp.get_clients()
+		if next(clients) == nil then
+			msg[#msg + 1] = "N/A"
+			return table.concat(msg, "")
+		end
+		for _, client in ipairs(clients) do
+			msg[#msg + 1] = client.name
+		end
+		return table.concat(msg, ", ")
+		-- NOTE: I am unsure what this block does, and am leaving in as a comment for reference
+		-- for _, client in ipairs(clients) do
+		--   local filetypes = client.config.filetypes
+		--   if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+		--     return client.name
+		--   end
+		-- end
+	end,
+	icon = "",
+	color = { fg = colors.sapphire, gui = "bold" },
+})
 
-ins_left {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', info = ' ' },
-  diagnostics_color = {
-    error = {},
-    warn = {},
-    info = {},
-  },
-}
+ins_left({
+	"diagnostics",
+	sources = { "nvim_diagnostic" },
+	symbols = { error = " ", warn = " ", info = " " },
+	diagnostics_color = {
+		error = {},
+		warn = {},
+		info = {},
+	},
+})
 
 local function get_schema()
-  local schema = require("yaml-companion").get_buf_schema(0)
-  if schema.result[1].name == "none" then
-    return ""
-  end
-  return schema.result[1].name
+	local schema = require("yaml-companion").get_buf_schema(0)
+	if schema.result[1].name == "none" then
+		return ""
+	end
+	return schema.result[1].name
 end
 
-ins_right {
-  'filetype',
-  fmt = string.upper,
-  icons_enabled = true,
-}
+ins_right({
+	"filetype",
+	fmt = string.upper,
+	icons_enabled = true,
+})
 
-ins_right { get_schema }
+ins_right({ get_schema })
 
-ins_right { 'location' }
-
-ins_right { 'progress' }
+-- ins_right({ "location", color = { fg = colors.text, bg = colors.mauve } })
+-- ins_right({ "progress" })
 
 lualine.setup(config)
