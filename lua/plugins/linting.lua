@@ -7,6 +7,7 @@ return {
 
       -- Define kube-linter since it's not built into nvim-lint
       lint.linters.kube_linter = {
+        name = "kube-linter",
         cmd = "kube-linter",
         stdin = false,
         args = { "lint", "--format=json" },
@@ -36,6 +37,7 @@ return {
       -- Configure linters by filetype
       lint.linters_by_ft = {
         yaml = { "yamllint" },
+        ["yaml.ansible"] = { "ansible_lint" },
         helm = { "kube_linter" },
       }
 

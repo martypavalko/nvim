@@ -17,10 +17,14 @@ return {
       { "<leader>cm", "<cmd>Telescope git_commits<cr>",                                       desc = "Git commits" },
       { "<leader>gt", "<cmd>Telescope git_status<cr>",                                        desc = "Git status" },
       { "<leader>ma", "<cmd>Telescope marks<cr>",                                             desc = "Telescope bookmarks" },
+      { "<leader>ft", "<cmd>Telescope diagnostics<cr>",                                       desc = "Diagnostics" },
+      { "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>",                               desc = "Buffer Diagnostics" },
     },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+      local open_with_trouble = require("trouble.sources.telescope").open
+      local add_to_trouble = require("trouble.sources.telescope").add
 
       telescope.setup({
         defaults = {
@@ -52,14 +56,14 @@ return {
           },
           mappings = {
             i = {
-              ["<C-j>"] = actions.move_selection_next,
-              ["<C-k>"] = actions.move_selection_previous,
-              ["<C-n>"] = actions.cycle_history_next,
-              ["<C-p>"] = actions.cycle_history_prev,
+              ["<C-n>"] = actions.move_selection_next,
+              ["<C-p>"] = actions.move_selection_previous,
               ["<Esc>"] = actions.close,
+              ["<C-t>"] = open_with_trouble,
             },
             n = {
               ["q"] = actions.close,
+              ["<C-t>"] = open_with_trouble,
             },
           },
         },

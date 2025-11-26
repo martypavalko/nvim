@@ -30,6 +30,9 @@ require("lazy").setup("plugins", {
   },
 })
 
+-- Load filetype detection
+require("config.filetype")
+
 -- Load core configurations
 require("core.options")
 require("core.keymaps")
