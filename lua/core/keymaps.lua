@@ -13,7 +13,7 @@ keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }
 -- Buffer navigation
 keymap.set("n", "H", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
-keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+keymap.set("n", "<leader>bd", "<cmd>bp|bd #<CR>", { desc = "Close buffer" })
 
 -- Move lines in visual mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
