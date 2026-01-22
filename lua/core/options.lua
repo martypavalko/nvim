@@ -76,6 +76,8 @@ opt.fileencoding = "utf-8"
 opt.cmdheight = 1
 opt.showmode = false
 
+opt.conceallevel = 1
+
 -- Performance
 opt.lazyredraw = false
 
