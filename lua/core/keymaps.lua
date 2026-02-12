@@ -47,3 +47,11 @@ keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
 keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
 keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
+
+
+local function toggleConcealLevel()
+  vim.opt.conceallevel = 2 - vim.opt.conceallevel:get()
+  print("set conceallevel=" .. vim.opt.conceallevel:get())
+end
+
+keymap.set("n", "<leader>v", toggleConcealLevel)
