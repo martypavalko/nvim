@@ -22,6 +22,7 @@ opt.incsearch = true
 
 -- Cursor line
 opt.cursorline = true
+opt.cursorcolumn = true
 
 -- Appearance
 opt.termguicolors = true
@@ -76,14 +77,10 @@ opt.fileencoding = "utf-8"
 opt.cmdheight = 1
 opt.showmode = false
 
-opt.conceallevel = 1
+opt.conceallevel = 0
 
 -- Performance
 opt.lazyredraw = false
-
--- Disable netrw (use nvim-tree instead)
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
 
 -- Disable some builtin vim plugins
 local default_plugins = {
