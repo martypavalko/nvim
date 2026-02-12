@@ -7,7 +7,6 @@ return {
         formatters_by_ft = {
           lua = { "stylua" },
           terraform = { "terraform_fmt" },
-          tf = { "terraform_fmt" },
           sh = { "shfmt" },
           bash = { "shfmt" },
         },

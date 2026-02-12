@@ -1,6 +1,29 @@
+-- Terraform filetype detection
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+    tfvars = "terraform",
+  },
+})
+
 -- Ansible filetype detection
 vim.filetype.add({
   pattern = {
+    -- Detect YAML files in directories containing ansible.cfg or .ansible-lint
+    [".*%.ya?ml"] = {
+      priority = -math.huge,
+      function(path, bufnr)
+        local dir = vim.fs.dirname(path)
+        local root = vim.fs.find({ "ansible.cfg", ".ansible-lint" }, {
+          path = dir,
+          upward = true,
+          stop = vim.env.HOME,
+        })
+        if #root > 0 then
+          return "yaml.ansible"
+        end
+      end,
+    },
     -- Detect Ansible playbooks and task files
     [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
     [".*/tasks/.*%.ya?ml"] = "yaml.ansible",
