@@ -50,8 +50,8 @@ keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
 
 local function toggleConcealLevel()
-  vim.opt.conceallevel = 2 - vim.opt.conceallevel:get()
+  vim.opt.conceallevel = (vim.opt.conceallevel:get() + 1) % 3
   print("set conceallevel=" .. vim.opt.conceallevel:get())
 end
 
-keymap.set("n", "<leader>v", toggleConcealLevel)
+keymap.set("n", "<leader>v", toggleConcealLevel, { desc = "Switches the conceallevel between 0 to 2" })
