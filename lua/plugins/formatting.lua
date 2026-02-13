@@ -9,6 +9,7 @@ return {
           terraform = { "terraform_fmt" },
           sh = { "shfmt" },
           bash = { "shfmt" },
+          go = { "goimports", "gofmt" },
         },
         format_on_save = {
           timeout_ms = 500,

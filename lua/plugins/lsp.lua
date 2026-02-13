@@ -31,6 +31,7 @@ return {
           "helm_ls",
           "terraformls",
           "bashls",
+          "gopls",
         },
         automatic_installation = true,
       })
@@ -188,6 +189,19 @@ return {
         capabilities = capabilities,
       })
 
+      vim.lsp.config("gopls", {
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+          },
+        },
+        capabilities = capabilities,
+      })
+
       vim.lsp.config("bashls", {
         filetypes = { "sh", "bash" },
         cmd = { "bash-language-server", "start" },
@@ -209,6 +223,7 @@ return {
         "helm_ls",
         "terraformls",
         "bashls",
+        "gopls",
       })
     end,
   },

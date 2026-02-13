@@ -18,6 +18,9 @@ return {
           "markdown",
           "markdown_inline",
           "c_sharp",
+          "go",
+          "gomod",
+          "gosum",
         },
         highlight = {
           enable = true,
