@@ -183,7 +183,7 @@ return {
       })
 
       vim.lsp.config("terraformls", {
-        filetypes = { "terraform" },
+        filetypes = { "terraform", "terraform-vars" },
         cmd = { "terraform-ls", "serve" },
         root_markers = { ".terraform", ".git" },
         capabilities = capabilities,
