@@ -26,6 +26,11 @@ keymap.set("v", ">", ">gv", { desc = "Indent right" })
 -- Better paste
 keymap.set("v", "p", '"_dP', { desc = "Paste without yanking" })
 
+-- System clipboard (use <leader>y to copy TO system, <leader>p to paste FROM system)
+keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system clipboard (before)" })
+
 -- Clear search highlighting
 keymap.set("n", "<leader>nh", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 

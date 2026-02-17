@@ -33,8 +33,7 @@ opt.colorcolumn = "79"
 -- Backspace
 opt.backspace = "indent,eol,start"
 
--- Clipboard
-opt.clipboard:append("unnamedplus")
+-- Clipboard (not synced with system — use <leader>y/<leader>p for system clipboard)
 
 -- Split windows
 opt.splitright = true
