@@ -10,6 +10,7 @@ return {
           sh = { "shfmt" },
           bash = { "shfmt" },
           go = { "goimports", "gofmt" },
+          cs = { "csharpier" },
         },
         format_on_save = {
           timeout_ms = 500,
