@@ -1,3 +1,12 @@
+-- Jinja2 template filetype detection
+vim.filetype.add({
+  extension = {
+    j2 = "jinja",
+    jinja = "jinja",
+    jinja2 = "jinja",
+  },
+})
+
 -- Terraform filetype detection
 vim.filetype.add({
   extension = {

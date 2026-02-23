@@ -32,6 +32,7 @@ return {
           "terraformls",
           "bashls",
           "gopls",
+          "jinja_lsp",
         },
         automatic_installation = true,
       })
@@ -202,6 +203,11 @@ return {
         capabilities = capabilities,
       })
 
+      vim.lsp.config("jinja_lsp", {
+        filetypes = { "jinja" },
+        capabilities = capabilities,
+      })
+
       vim.lsp.config("bashls", {
         filetypes = { "sh", "bash" },
         cmd = { "bash-language-server", "start" },
@@ -224,6 +230,7 @@ return {
         "terraformls",
         "bashls",
         "gopls",
+        "jinja_lsp",
       })
     end,
   },
