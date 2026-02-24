@@ -15,6 +15,25 @@ vim.filetype.add({
   },
 })
 
+-- Shell script detection via shebang (for files without .sh extension)
+vim.filetype.add({
+  pattern = {
+    [".*"] = {
+      priority = -math.huge,
+      function(path, bufnr)
+        local line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
+        if not line:match("^#!") then return end
+        local shells = { "bash", "sh", "dash", "ash", "ksh", "zsh" }
+        for _, shell in ipairs(shells) do
+          if line:match("%f[%w]" .. shell .. "%f[%W]") then
+            return "sh"
+          end
+        end
+      end,
+    },
+  },
+})
+
 -- Ansible filetype detection
 vim.filetype.add({
   pattern = {
