@@ -28,6 +28,7 @@ return {
       { "<leader>dt", function() require("easy-dotnet").test() end,            desc = "Dotnet Test" },
       { "<leader>dp", function() require("easy-dotnet").add_package() end,     desc = "Dotnet Add Package" },
       { "<leader>ds", function() require("easy-dotnet").solution_select() end, desc = "Dotnet Solution Select" },
+      { "<leader>dn", function() require("easy-dotnet").new() end,             desc = "Dotnet New" },
     },
     config = function()
       require("easy-dotnet").setup()
