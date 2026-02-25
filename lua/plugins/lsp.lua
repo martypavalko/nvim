@@ -34,6 +34,7 @@ return {
 					"gopls",
 					"jinja_lsp",
 					"pyright",
+					"dockerls",
 				},
 				automatic_installation = true,
 			})
@@ -225,6 +226,11 @@ return {
 				capabilities = capabilities,
 			})
 
+			vim.lsp.config("dockerls", {
+				filetypes = { "dockerfile" },
+				capabilities = capabilities,
+			})
+
 			-- Enable all LSP servers
 			vim.lsp.enable({
 				"lua_ls",
@@ -238,6 +244,7 @@ return {
 				"gopls",
 				"jinja_lsp",
 				"pyright",
+				"dockerls",
 			})
 		end,
 	},
