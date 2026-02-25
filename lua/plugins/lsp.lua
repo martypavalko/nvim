@@ -35,6 +35,7 @@ return {
 					"jinja_lsp",
 					"pyright",
 					"dockerls",
+					"docker_compose_language_service",
 				},
 				automatic_installation = true,
 			})
@@ -231,6 +232,11 @@ return {
 				capabilities = capabilities,
 			})
 
+			vim.lsp.config("docker_compose_language_service", {
+				filetypes = { "yaml" },
+				capabilities = capabilities,
+			})
+
 			-- Enable all LSP servers
 			vim.lsp.enable({
 				"lua_ls",
@@ -245,6 +251,7 @@ return {
 				"jinja_lsp",
 				"pyright",
 				"dockerls",
+				"docker_compose_language_service",
 			})
 		end,
 	},
