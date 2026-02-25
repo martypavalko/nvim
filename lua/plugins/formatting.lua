@@ -16,7 +16,8 @@ return {
           bash = { "shfmt" },
           go = { "goimports", "gofmt" },
           cs = { "csharpier" },
-          python = { "isort", "black" }
+          python = { "isort", "black" },
+          nginx = { "nginx_config_formatter" },
         },
         format_on_save = {
           timeout_ms = 500,
@@ -24,7 +25,7 @@ return {
         },
       })
 
-      local tools = { "stylua", "shfmt", "goimports", "csharpier", "isort", "black" }
+      local tools = { "stylua", "shfmt", "goimports", "csharpier", "isort", "black", "nginx_config_formatter" }
       local registry = require("mason-registry")
       registry.refresh(function()
         for _, tool in ipairs(tools) do
