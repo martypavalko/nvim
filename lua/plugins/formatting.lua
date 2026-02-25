@@ -4,6 +4,11 @@ return {
     event = "BufWritePre",
     config = function()
       require("conform").setup({
+        formatters = {
+          stylua = {
+            prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
+          },
+        },
         formatters_by_ft = {
           lua = { "stylua" },
           terraform = { "terraform_fmt" },
