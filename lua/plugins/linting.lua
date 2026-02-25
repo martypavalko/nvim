@@ -51,6 +51,16 @@ return {
 					lint.try_lint()
 				end,
 			})
+			local tools = { "yamllint", "ansible-lint", "kube-linter", "shellcheck" }
+			local registry = require("mason-registry")
+			registry.refresh(function()
+				for _, tool in ipairs(tools) do
+					local ok, pkg = pcall(registry.get_package, tool)
+					if ok and not pkg:is_installed() then
+						pkg:install()
+					end
+				end
+			end)
 		end,
 	},
 }
