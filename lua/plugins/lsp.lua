@@ -237,6 +237,17 @@ return {
         capabilities = capabilities,
       })
 
+      vim.lsp.config("ruby_lsp", {
+        filetypes = { "ruby", "eruby" },
+        cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+        root_markers = { "Gemfile", ".git" },
+        capabilities = capabilities,
+        init_options = {
+          formatter = "auto",
+          linters = { "rubocop" },
+        },
+      })
+
       -- Enable all LSP servers
       vim.lsp.enable({
         "lua_ls",
@@ -252,6 +263,7 @@ return {
         "pyright",
         "dockerls",
         "docker_compose_language_service",
+        "ruby_lsp",
       })
     end,
   },
