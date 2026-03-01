@@ -117,8 +117,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
-vim.api.nvim_create_autocmd("TermClose", {
-  callback = function()
-    vim.cmd("close")
-  end,
-})
+-- TODO: Make this only close, if buffer is in it's on window when buffer deleted
+-- vim.api.nvim_create_autocmd("TermClose", {
+--   callback = function()
+--     vim.cmd("close")
+--   end,
+-- })
