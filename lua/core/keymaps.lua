@@ -4,12 +4,6 @@ local keymap = vim.keymap
 keymap.set("n", ";", ":", { desc = "Enter command mode" })
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 
--- Window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
-
 -- Buffer navigation
 keymap.set("n", "H", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
