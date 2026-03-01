@@ -108,3 +108,17 @@ vim.api.nvim_create_autocmd("LspProgress", {
     io.stdout:flush()
   end,
 })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
+  callback = function()
+    vim.opt.number = true
+    vim.opt.relativenumber = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("TermClose", {
+  callback = function()
+    vim.cmd("close")
+  end,
+})
