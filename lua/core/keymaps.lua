@@ -7,7 +7,7 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 -- Buffer navigation
 keymap.set("n", "H", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
-keymap.set("n", "<C-x>", "<cmd>bp|bd! #<CR>", { desc = "Close buffer" })
+keymap.set("n", "<C-b>q", "<cmd>bp|bd! #<CR>", { desc = "Close buffer" })
 
 -- Move lines in visual mode
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
