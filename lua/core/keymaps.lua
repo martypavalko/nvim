@@ -4,9 +4,6 @@ local keymap = vim.keymap
 keymap.set("n", ";", ":", { desc = "Enter command mode" })
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 
--- Buffer navigation
-keymap.set("n", "H", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
-keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<C-b>q", "<cmd>bp|bd! #<CR>", { desc = "Close buffer" })
 
 -- Move lines in visual mode

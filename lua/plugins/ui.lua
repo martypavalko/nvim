@@ -4,6 +4,16 @@ return {
     event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+      local function get_buffer_count()
+        local buffers = vim.fn.execute("ls")
+        local count = 0
+        for line in string.gmatch(buffers, "[^\r\n]+") do
+          if string.match(line, "^%s*%d+") then
+            count = count + 1
+          end
+        end
+        return count
+      end
       require("lualine").setup({
         options = {
           icons_enabled = true,
@@ -17,22 +27,28 @@ return {
           globalstatus = true,
         },
         sections = {
-          lualine_a = { "mode" },
+          lualine_a = { {
+            "mode",
+            fmt = function(str)
+              return str:sub(1, 1)
+            end,
+          } },
           lualine_b = { "branch", "diff", "diagnostics" },
-          lualine_c = { { "filename", path = 1 } },
-          lualine_x = { "encoding", "fileformat", "filetype" },
-          lualine_y = { "progress" },
+          lualine_c = {
+            {
+              function()
+                return "(" .. get_buffer_count() .. ")B"
+              end,
+            },
+            {
+              "filename",
+              path = 1,
+            },
+          },
+          lualine_x = { "filetype" },
+          lualine_y = { "lsp_status" },
           lualine_z = { "location" },
         },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { "filename" },
-          lualine_x = { "location" },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
         extensions = { "nvim-tree", "lazy", "mason" },
       })
     end,
@@ -120,10 +136,21 @@ return {
       },
     },
   },
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    opts = {}
-  }
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   version = "*",
+  --   dependencies = "nvim-tree/nvim-web-devicons",
+  --   config = function()
+  --     require("bufferline").setup({
+  --       options = {
+  --         show_buffer_close_icons = false,
+  --         diagnostics = "nvim_lsp",
+  --         diagnostics_indicator = function(count, level)
+  --           local icon = level:match("error") and " " or " "
+  --           return " " .. icon .. count
+  --         end,
+  --       },
+  --     })
+  --   end,
+  -- },
 }

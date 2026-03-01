@@ -7,24 +7,34 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<cr>",                                        desc = "Find files" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", desc = "Find all files" },
-      { "<leader>fw", "<cmd>Telescope live_grep<cr>",                                         desc = "Live grep" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>",                                           desc = "Find buffers" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                         desc = "Help tags" },
-      { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                                          desc = "Find old files" },
-      { "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>",                         desc = "Find in current buffer" },
-      { "<leader>cm", "<cmd>Telescope git_commits<cr>",                                       desc = "Git commits" },
-      { "<leader>gt", "<cmd>Telescope git_status<cr>",                                        desc = "Git status" },
-      { "<leader>ma", "<cmd>Telescope marks<cr>",                                             desc = "Telescope bookmarks" },
-      { "<leader>ft", "<cmd>Telescope diagnostics<cr>",                                       desc = "Diagnostics" },
-      { "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>",                               desc = "Buffer Diagnostics" },
+      { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+      {
+        "<leader>fb",
+        "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<cr>",
+        desc = "Find buffers",
+      },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+      { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Find old files" },
+      {
+        "<leader>fz",
+        "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+        desc = "Find in current buffer",
+      },
+      { "<leader>fgc", "<cmd>Telescope git_commits<cr>", desc = "Git commits" },
+      { "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
+      { "<leader>ft", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+      {
+        "<leader>fd",
+        "<cmd>Telescope diagnostics bufnr=0<cr>",
+        desc = "Buffer Diagnostics",
+      },
     },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local open_with_trouble = require("trouble.sources.telescope").open
-      local add_to_trouble = require("trouble.sources.telescope").add
 
       telescope.setup({
         defaults = {
@@ -63,6 +73,7 @@ return {
             },
             n = {
               ["q"] = actions.close,
+              ["d"] = actions.delete_buffer,
               ["<C-t>"] = open_with_trouble,
             },
           },
