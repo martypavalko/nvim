@@ -5,6 +5,7 @@ return {
     dependencies = { "catppuccin", "kanagawa" },
     priority = 999,
     config = function()
+      -- vim.cmd.colorscheme("tokyonight-night")
       vim.cmd.colorscheme("catppuccin")
       -- vim.cmd("colorscheme kanagawa-wave")
       vim.keymap.set("n", "<leader>tt", function()
