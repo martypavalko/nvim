@@ -25,6 +25,8 @@ return {
       { "<leader>fgc", "<cmd>Telescope git_commits<cr>", desc = "Git commits" },
       { "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
       { "<leader>ft", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+      { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find LSP Document Symbols" },
+      { "<leader>fs", "<cmd>Telescope lsp_references<cr>", desc = "Find LSP References" },
       {
         "<leader>fd",
         "<cmd>Telescope diagnostics bufnr=0<cr>",
