@@ -59,7 +59,7 @@ return {
 
       vim.keymap.set("n", "<leader>fe", function()
         toggle_telescope(harpoon:list())
-      end, { desc = "Open harpoon window" })
+      end, { desc = "Find Harpoons" })
     end,
   },
 }
