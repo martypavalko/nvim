@@ -5,13 +5,16 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
+  preview = {
+    icon_provider = "devicons",
+  },
 
   config = function()
     require("markview").setup({
       markdown = {
-        preview = {
-          icon_provider = "devicons",
-        },
+        block_quotes = { wrap = true },
+        headings = { org_indent_wrap = true },
+        list_items = { wrap = true },
       },
     })
     vim.api.nvim_create_autocmd("FileType", {
