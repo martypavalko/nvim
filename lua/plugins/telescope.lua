@@ -25,8 +25,8 @@ return {
       { "<leader>fgc", "<cmd>Telescope git_commits<cr>", desc = "Git commits" },
       { "<leader>fgs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
       { "<leader>ft", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find LSP Document Symbols" },
-      { "<leader>fs", "<cmd>Telescope lsp_references<cr>", desc = "Find LSP References" },
+      { "<leader>fls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find LSP Document Symbols" },
+      { "<leader>flr", "<cmd>Telescope lsp_references<cr>", desc = "Find LSP References" },
       {
         "<leader>fd",
         "<cmd>Telescope diagnostics bufnr=0<cr>",
@@ -70,7 +70,6 @@ return {
             i = {
               ["<C-n>"] = actions.move_selection_next,
               ["<C-p>"] = actions.move_selection_previous,
-              ["<Esc>"] = actions.close,
               ["<C-t>"] = open_with_trouble,
             },
             n = {
