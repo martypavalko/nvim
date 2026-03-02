@@ -109,6 +109,27 @@ vim.api.nvim_create_autocmd("LspProgress", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = "en_us"
+    vim.cmd([[
+      highlight SpellBad cterm=underline gui=underline
+      highlight SpellCap cterm=underline gui=underline
+    ]])
+  end,
+  desc = "Enable spellcheck for Markdown files",
+})
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "catppuccin*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "SpellBad", { sp = "#f38ba8", undercurl = true })
+    vim.api.nvim_set_hl(0, "SpellCap", { sp = "#f9e2af", undercurl = true })
+  end,
+})
+
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
   callback = function()

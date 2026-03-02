@@ -32,6 +32,11 @@ return {
         "<cmd>Telescope diagnostics bufnr=0<cr>",
         desc = "Buffer Diagnostics",
       },
+      {
+        "z=",
+        "<cmd>Telescope spell_suggest<cr>",
+        desc = "Find Spelling Suggestions",
+      },
     },
     config = function()
       local telescope = require("telescope")

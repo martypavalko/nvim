@@ -81,6 +81,10 @@ opt.conceallevel = 0
 -- Performance
 opt.lazyredraw = false
 
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
 -- Disable some builtin vim plugins
 local default_plugins = {
   "2html_plugin",
