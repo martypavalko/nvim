@@ -6,11 +6,14 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
 
-  preview = {
-    icon_provider = "devicons",
-  },
-
   config = function()
+    require("markview").setup({
+      markdown = {
+        preview = {
+          icon_provider = "devicons",
+        },
+      },
+    })
     vim.api.nvim_create_autocmd("FileType", {
       pattern = { "markdown" },
       callback = function()
