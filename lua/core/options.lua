@@ -28,7 +28,9 @@ opt.cursorcolumn = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
-opt.colorcolumn = "79"
+opt.colorcolumn = "81"
+
+opt.textwidth = 80
 
 -- Backspace
 opt.backspace = "indent,eol,start"
