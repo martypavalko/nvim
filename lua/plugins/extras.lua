@@ -4,6 +4,14 @@ return {
     ft = "helm",
   },
   {
+    "kylechui/nvim-surround",
+    version = "^3.0.0",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end,
+  },
+  {
     "folke/trouble.nvim",
     opts = {
       win = {
@@ -24,16 +32,6 @@ return {
         "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
         desc = "Buffer Diagnostics (Trouble)",
       },
-      -- {
-      --   "<leader>cs",
-      --   "<cmd>Trouble symbols toggle focus=false<cr>",
-      --   desc = "Symbols (Trouble)",
-      -- },
-      -- {
-      --   "<leader>cl",
-      --   "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-      --   desc = "LSP Definitions / references / ... (Trouble)",
-      -- },
       {
         "<leader>xL",
         "<cmd>Trouble loclist toggle<cr>",
