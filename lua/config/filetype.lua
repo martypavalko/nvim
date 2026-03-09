@@ -79,3 +79,19 @@ vim.filetype.add({
     end,
   },
 })
+
+vim.filetype.add({
+  filename = {
+    ["docker-compose.yml"] = "dockercompose",
+    ["docker-compose.yaml"] = "dockercompose",
+    ["compose.yml"] = "dockercompose",
+    ["compose.yaml"] = "dockercompose",
+  },
+  pattern = {
+    ["docker%-compose%..*%.ya?ml"] = "dockercompose",
+    ["compose%..*%.ya?ml"] = "dockercompose",
+  },
+})
+
+-- Use the yaml treesitter parser for dockercompose filetype
+vim.treesitter.language.register("yaml", "dockercompose")
