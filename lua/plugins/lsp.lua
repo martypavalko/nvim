@@ -132,6 +132,7 @@ return {
             validate = true,
             hover = true,
             completion = true,
+            lineLength = false,
           },
         },
         capabilities = capabilities,
@@ -233,7 +234,7 @@ return {
       })
 
       vim.lsp.config("docker_compose_language_service", {
-        filetypes = { "dockercompose" },
+        filetypes = { "yaml.dockercompose" },
         capabilities = capabilities,
       })
 
