@@ -60,17 +60,17 @@ return {
             preview_cutoff = 120,
           },
           file_ignore_patterns = { "^.git/" },
-          vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
-            "--glob=!.git/",
-          },
+          -- vimgrep_arguments = {
+          --   "rg",
+          --   "--color=never",
+          --   "--no-heading",
+          --   "--with-filename",
+          --   "--line-number",
+          --   "--column",
+          --   "--smart-case",
+          --   "--hidden",
+          --   "--glob=!.git/",
+          -- },
           mappings = {
             i = {
               ["<C-n>"] = actions.move_selection_next,
