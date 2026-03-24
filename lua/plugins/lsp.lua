@@ -172,10 +172,17 @@ return {
         settings = {
           ["helm-ls"] = {
             yamlls = {
-              enabled = false,
+              enabled = true,
               diagnosticsLimit = 50,
               showDiagnosticsDirectly = false,
               path = "yaml-language-server",
+              config = {
+                schemas = {
+                  kubernetes = "templates/**",
+                },
+                completion = true,
+                hover = true,
+              },
             },
             valuesFiles = {
               mainValuesFile = "values.yaml",
