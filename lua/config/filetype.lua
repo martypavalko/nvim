@@ -36,6 +36,15 @@ vim.filetype.add({
   },
 })
 
+-- Helm chart template filetype detection
+vim.filetype.add({
+  pattern = {
+    [".*/templates/.*%.yaml"] = "helm",
+    [".*/templates/.*%.tpl"] = "helm",
+    [".*/templates/.*%.txt"] = "helm",
+  },
+})
+
 -- Ansible filetype detection
 vim.filetype.add({
   pattern = {
